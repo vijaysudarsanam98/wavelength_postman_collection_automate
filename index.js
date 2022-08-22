@@ -24,7 +24,11 @@ app.get(['/', '/health'], function (req, res) {
 });
 
 
-  collection.signup()
+    let x=  collection.signup()
+    console.log("x"+x)
+
+
+  
 
 
 
