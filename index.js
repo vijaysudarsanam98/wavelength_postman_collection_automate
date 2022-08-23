@@ -38,8 +38,6 @@ app.listen(port, async function () {
  console.log(verificationCodeResponse)
  let login=await collection.login()
  console.log("login" + login)
- let createcontacts=await collection.CreateContacts()
- console.log("createcontacts" + createcontacts)
 
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 

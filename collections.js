@@ -50,17 +50,3 @@ module.exports.login = async function () {
   return data
 
 }
-module.exports.CreateContacts = async function () {
-  const uri = 'https://stagecoreapi.wvlnth.net/users/userid'
-  body["name"] = "sudarsan"
-  console.log(body)
-
-  const res = await fetch(uri, { 
-    method: 'POST', 
-    body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' } });
-  const data = await res.json();
-  console.log(data)
-  return data
-
-}
