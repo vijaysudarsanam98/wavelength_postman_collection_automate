@@ -18,7 +18,6 @@ module.exports.signup = async function () {
   const res = await fetch(uri, { method: 'POST', body: JSON.stringify(body) , headers: { 'Content-Type': 'application/json' } });
   console.log(body)
   const data = await res.json();
-  console.log(data)
   return data
 
 }
@@ -33,8 +32,19 @@ module.exports.verificationCode = async function () {
     method: 'POST', 
     body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' } });
+  const data = await res.json();
+  return data
+
+}
+module.exports.login = async function () {
+  const uri = 'https://stagecoreapi.wvlnth.net/users/login'
+  body["verificationCode"] = "10000"
   console.log(body)
-  console.log(res)
+
+  const res = await fetch(uri, { 
+    method: 'POST', 
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' } });
   const data = await res.json();
   console.log(data)
   return data

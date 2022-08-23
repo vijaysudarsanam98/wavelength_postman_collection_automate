@@ -36,6 +36,8 @@ app.listen(port, async function () {
  console.log(signupResponse)
  let verificationCodeResponse = await collection.verificationCode()
  console.log(verificationCodeResponse)
+ let login=await collection.login()
+ console.log("login" + login)
 
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 
