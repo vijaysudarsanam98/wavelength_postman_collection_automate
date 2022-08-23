@@ -41,7 +41,7 @@ app.listen(port, async function () {
  let token=login.token
 console.log(userId)
 console.log(token)
-let createContacts = await collection.createContacts()
+let createContacts = await collection.createContacts(token,userId)
  console.log(createContacts)
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 
