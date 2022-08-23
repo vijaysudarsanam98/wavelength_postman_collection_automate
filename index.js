@@ -24,8 +24,7 @@ app.get(['/', '/health'], function (req, res) {
 });
 
 
-    let x=  collection.signup()
-    console.log("x"+x)
+    
 
 
   
@@ -33,6 +32,11 @@ app.get(['/', '/health'], function (req, res) {
 
 
 app.listen(port, async function () {
+ let signupResponse= await collection.signup()
+ console.log(signupResponse)
+ let verificationCodeResponse = await collection.verificationCode()
+ console.log(verificationCodeResponse)
+
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 
   
