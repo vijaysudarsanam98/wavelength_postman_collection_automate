@@ -37,8 +37,10 @@ app.listen(port, async function () {
  let verificationCodeResponse = await collection.verificationCode()
  console.log(verificationCodeResponse)
  let login=await collection.login()
- console.log("login" + login)
-
+ let userId=login.userId
+ let token=login.token
+console.log(userId)
+console.log(token)
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 
   
@@ -50,6 +52,3 @@ app.listen(port, async function () {
    
 
 });
-
-
-

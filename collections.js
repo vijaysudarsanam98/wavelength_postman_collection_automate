@@ -45,8 +45,18 @@ module.exports.login = async function () {
     method: 'POST', 
     body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' } });
-  const data = await res.json();
-  console.log(data)
-  return data
+  const data = await res.json()
+ // console.log(data.objects.userId)
+ // const parse=JSON.parse(data[1])
+  let userId=data.objects.userId
+  console.log(userId)
+  let token=data.objects.token
+  console.log(token)
+  return {
+    userId,
+    token
+  }
 
 }
+
+
