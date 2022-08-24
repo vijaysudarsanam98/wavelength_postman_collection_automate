@@ -16,6 +16,22 @@ let payload = {
 let contacts=[{"name":"Test1", "phoneNumber":"1000090002", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090002", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090003", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090004", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090005", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090006", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090007", "phoneNumberCode":"+91"}]
 
 JSON.parse(JSON.stringify(contacts))
+
+// let newmessage=[
+//   {
+//     "source": {
+//       "id": null,
+//       "name": "Thestatesman.com"
+//     },
+//     "author": "SNS Web",
+//     "title": "Olympics in 2021 unrealistic unless COVID-19 vaccine found - The Statesman",
+//     "description": "Olympics is not the only sporting tournament to be pushed back because of the dreaded coronavirus pandemic and high-profile tournaments including the cash-rich Indian Premier League (IPL) have been affected.",
+//     "url": "https://www.thestatesman.com/sports/olympics-in-2021-unrealistic-unless-covid-19-vaccine-found1502879079-1502879079.html",
+//     "urlToImage": "https://www.thestatesman.com/wp-content/uploads/2020/03/Tokyo2020.jpg",
+//     "publishedAt": "2020-04-19T14:41:24Z",
+//     "content": "Holding the Tokyo Olympics any time before a vaccine is found will be “very unrealistic,” according to a leading global health expert. Professor Devi Sridhar said that the development of the vaccine will be key to when the Olympics can be held.\r\nSridhar, howe… [+1886 chars]"
+//   }];
+//   JSON.parse(JSON.stringify(newmessage))
 // let array=[]
 
 // array.push(contacts)
@@ -177,6 +193,7 @@ module.exports.getContacts = async function (token,userId) {
 }
 module.exports.createMessages = async function (profileUser,contactUser,token) {
   const uri='https://stagemessagesapi.wvlnth.net/messages'
+  const url='https://api.coindesk.com/v1/bpi/currentprice.json'
   console.log(contactUser)
 
   console.log(uri)
@@ -187,12 +204,17 @@ module.exports.createMessages = async function (profileUser,contactUser,token) {
 
       'Content-Type': 'application/json'
     }
+   const getmessage = await fetch(url,{
+      method: 'GET',
+      headers:  { 'Content-Type': 'application/json' },
+       })
 
+       const value = await getmessage.text();
+       //let x = getmessage.objects.articles
+    
     let msgBody={
       fromUserId: profileUser, toUserId: contactUser, 
-message: "hi" 
-
-
+      message:value
     }
   console.log(msgBody)
 
