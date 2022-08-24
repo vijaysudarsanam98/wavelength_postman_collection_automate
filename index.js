@@ -69,7 +69,8 @@ let inviteContacts = await collection.inviteContacts(token,userId)
  console.log(messageToContact6)
 
 
-
+let messageApi=await collection.universityNames()
+console.log(messageApi)
 
 
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);

@@ -207,3 +207,23 @@ message: "hi"
   return data
 
 }
+
+module.exports.universityNames = async function () {
+  const uri='http://universities.hipolabs.com/search?country=United+Kingdom'
+
+  console.log(uri)
+ // console.log(contacts)
+  
+    
+
+    
+
+  const res = await fetch(uri, { 
+    method: 'GET' });
+
+   
+  const data = await res.json();
+  console.log(data)
+  return data
+
+}
