@@ -41,8 +41,37 @@ app.listen(port, async function () {
  let token=login.token
 console.log(userId)
 console.log(token)
-let createContacts = await collection.createContacts(token,userId)
+let inviteContacts = await collection.inviteContacts(token,userId)
+ console.log(inviteContacts)
+ let createContacts=await collection.createContacts(token,userId)
  console.log(createContacts)
+ let getContacts=await collection.getContacts(token,userId)
+ let profileUser=getContacts.profile
+ let contact1=getContacts.c1.userId
+ let contact2=getContacts.c2.userId
+ let contact3=getContacts.c3.userId
+ let contact4=getContacts.c4.userId
+ let contact5=getContacts.c5.userId
+ let contact6=getContacts.c6.userId
+ let messageToContact1=await collection.createMessages(profileUser,contact1,token)
+ let messageToContact2=await collection.createMessages(profileUser,contact2,token)
+ let messageToContact3=await collection.createMessages(profileUser,contact3,token)
+ let messageToContact4=await collection.createMessages(profileUser,contact4,token)
+ let messageToContact5=await collection.createMessages(profileUser,contact5,token)
+ let messageToContact6=await collection.createMessages(profileUser,contact6,token)
+
+
+ console.log(messageToContact1)
+ console.log(messageToContact2)
+ console.log(messageToContact3)
+ console.log(messageToContact4)
+ console.log(messageToContact5)
+ console.log(messageToContact6)
+
+
+
+
+
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 
   
