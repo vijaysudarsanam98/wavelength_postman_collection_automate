@@ -4,10 +4,9 @@ const { post } = require('request');
 let request = require('request')
 const random = require("randomstring");
 
-const phoneNo = '10000' + random.generate({ length: 5, charset: 'numeric' });
 
 let payload = {
-  phoneNumber: phoneNo,
+  phoneNumber: "1000000001",
   phoneNumberCode: "+91",
 }
 
@@ -19,20 +18,20 @@ JSON.parse(JSON.stringify(contacts))
 // let array=[]
 
 // array.push(contacts)
-module.exports.signup = async function () {
-  let payload = {
-    phoneNumber: phoneNo,
-    phoneNumberCode: "+91",
-  }
-  payload["name"] = "vijay"
+// module.exports.signup = async function () {
+//   let payload = {
+//     phoneNumber: phoneNo,
+//     phoneNumberCode: "+91",
+//   }
+//   payload["name"] = "vijay"
 
-  const uri = 'https://stagecoreapi.wvlnth.net/users'
-  const res = await fetch(uri, { method: 'POST', body: JSON.stringify(payload) , headers: { 'Content-Type': 'application/json' } });
-  console.log(payload)
-  const data = await res.json();
-  return data
+//   const uri = 'https://stagecoreapi.wvlnth.net/users'
+//   const res = await fetch(uri, { method: 'POST', body: JSON.stringify(payload) , headers: { 'Content-Type': 'application/json' } });
+//   console.log(payload)
+//   const data = await res.json();
+//   return data
 
-}
+// }
 
 module.exports.verificationCode = async function () {
   const uri = 'https://stagecoreapi.wvlnth.net/users/verification_code'
@@ -50,6 +49,7 @@ module.exports.verificationCode = async function () {
 }
 module.exports.login = async function () {
   const uri = 'https://stagecoreapi.wvlnth.net/users/login'
+  payload["deviceId"] = "1234567890123456",
   payload["verificationCode"] = "10000"
   console.log(payload)
 

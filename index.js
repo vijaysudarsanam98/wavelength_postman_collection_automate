@@ -6,6 +6,7 @@ const collection=require('./collections')
 const bodyParser = require('body-parser');
 const app = express();
 const { json } = require('body-parser');
+const connection = require('./sqlconnection')
 
 
 app.use(bodyParser.json())
@@ -31,6 +32,8 @@ app.get(['/', '/health'], function (req, res) {
 
 
 app.listen(port, async function () {
+//  let signupResponse= await collection.signup()
+//  console.log(signupResponse)
  let verificationCodeResponse = await collection.verificationCode()
  console.log(verificationCodeResponse)
  let login=await collection.login()
@@ -39,6 +42,8 @@ app.listen(port, async function () {
  
 console.log(userId)
 console.log(token)
+let newuser = await connection.x()
+console.log("newuser" + newuser)
 let inviteContacts = await collection.inviteContacts(token,userId)
  console.log(inviteContacts)
  let createContacts=await collection.createContacts(token,userId)
