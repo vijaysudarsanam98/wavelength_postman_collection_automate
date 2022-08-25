@@ -174,8 +174,31 @@ module.exports.getContacts = async function (token,userId) {
     c6
   }
 
+  
 }
-module.exports.createMessages = async function (profileUser,contactUser,token) {
+
+module.exports.universityNames = async function () {
+  const uri='https://api.coindesk.com/v1/bpi/currentprice.json'
+
+  console.log(uri)
+ // console.log(contacts)
+  
+    
+
+    
+
+  const res = await fetch(uri, { 
+    method: 'GET' });
+
+   
+  const msg = await res.text();
+  console.log(msg)
+  return msg
+}
+
+//const x = msg;
+
+module.exports.createMessages = async function (profileUser,contactUser,token,msg) {
   const uri='https://stagemessagesapi.wvlnth.net/messages'
   console.log(contactUser)
 
@@ -190,7 +213,7 @@ module.exports.createMessages = async function (profileUser,contactUser,token) {
 
     let msgBody={
       fromUserId: profileUser, toUserId: contactUser, 
-message: "hi" 
+message: msg
 
 
     }
@@ -208,22 +231,3 @@ message: "hi"
 
 }
 
-module.exports.universityNames = async function () {
-  const uri='http://universities.hipolabs.com/search?country=United+Kingdom'
-
-  console.log(uri)
- // console.log(contacts)
-  
-    
-
-    
-
-  const res = await fetch(uri, { 
-    method: 'GET' });
-
-   
-  const data = await res.json();
-  console.log(data)
-  return data
-
-}
