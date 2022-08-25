@@ -191,14 +191,17 @@ module.exports.universityNames = async function () {
     method: 'GET' });
 
    
-  const msg = await res.text();
+  const msg1 = await res.json();
+ const x =  JSON.stringify(msg1);
+ const y = x.replaceAll('"', '',);
+ const msg = y.replace(/[{()}]/g, '');
   console.log(msg)
   return msg
 }
 
 //const x = msg;
 
-module.exports.createMessages = async function (profileUser,contactUser,token) {
+module.exports.createMessages = async function (profileUser,contactUser,token,msg) {
   const uri='https://stagemessagesapi.wvlnth.net/messages'
   console.log(contactUser)
 
@@ -213,9 +216,7 @@ module.exports.createMessages = async function (profileUser,contactUser,token) {
 
     let msgBody={
       fromUserId: profileUser, toUserId: contactUser, 
-message: "hi"
-
-
+message: msg
     }
   console.log(msgBody)
 

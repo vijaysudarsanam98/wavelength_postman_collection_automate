@@ -60,12 +60,12 @@ let inviteContacts = await collection.inviteContacts(token,userId)
 let messageApi=await collection.universityNames()
 console.log(messageApi)
 
- let messageToContact1=await collection.createMessages(profileUser,contact1,token)
- let messageToContact2=await collection.createMessages(profileUser,contact2,token)
- let messageToContact3=await collection.createMessages(profileUser,contact3,token)
- let messageToContact4=await collection.createMessages(profileUser,contact4,token)
- let messageToContact5=await collection.createMessages(profileUser,contact5,token)
- let messageToContact6=await collection.createMessages(profileUser,contact6,token)
+ let messageToContact1=await collection.createMessages(profileUser,contact1,token,messageApi)
+ let messageToContact2=await collection.createMessages(profileUser,contact2,token,messageApi)
+ let messageToContact3=await collection.createMessages(profileUser,contact3,token,messageApi)
+ let messageToContact4=await collection.createMessages(profileUser,contact4,token,messageApi)
+ let messageToContact5=await collection.createMessages(profileUser,contact5,token,messageApi)
+ let messageToContact6=await collection.createMessages(profileUser,contact6,token,messageApi)
 
 
  console.log(messageToContact1)
