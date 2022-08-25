@@ -32,8 +32,8 @@ app.get(['/', '/health'], function (req, res) {
 
 
 app.listen(port, async function () {
- let signupResponse= await collection.signup()
- console.log(signupResponse)
+//  let signupResponse= await collection.signup()
+//  console.log(signupResponse)
  let verificationCodeResponse = await collection.verificationCode()
  console.log(verificationCodeResponse)
  let login=await collection.login()

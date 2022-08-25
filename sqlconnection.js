@@ -15,6 +15,7 @@ database: "wa_main"
 client.connect();
 
 
+   module.exports.x = async function(){
     client.query(`select * from users where created_at>=current_date`,(err,res)=>{
     if(!err){
         console.log(res.rows);
@@ -22,12 +23,9 @@ client.connect();
     else {
         console.log(err.message);
     }
-     return res.rows[0].id,
-    
-    client.end(),
-    console.log("newuser" + res.rows[0].id);
+    client.end();
 })
-
+   }
 
 // const xy= x.id;
 // console.log(xy)
