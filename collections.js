@@ -198,7 +198,7 @@ module.exports.universityNames = async function () {
 
 //const x = msg;
 
-module.exports.createMessages = async function (profileUser,contactUser,token,msg) {
+module.exports.createMessages = async function (profileUser,contactUser,token) {
   const uri='https://stagemessagesapi.wvlnth.net/messages'
   console.log(contactUser)
 
@@ -213,7 +213,7 @@ module.exports.createMessages = async function (profileUser,contactUser,token,ms
 
     let msgBody={
       fromUserId: profileUser, toUserId: contactUser, 
-message: msg
+message: "hi"
 
 
     }

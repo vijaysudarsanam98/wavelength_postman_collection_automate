@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const { json } = require('body-parser');
 const connection = require('./sqlconnection')
+const model=require('./model')
 
 
 app.use(bodyParser.json())
@@ -32,8 +33,7 @@ app.get(['/', '/health'], function (req, res) {
 
 
 app.listen(port, async function () {
-//  let signupResponse= await collection.signup()
-//  console.log(signupResponse)
+ 
  let verificationCodeResponse = await collection.verificationCode()
  console.log(verificationCodeResponse)
  let login=await collection.login()
@@ -60,12 +60,12 @@ let inviteContacts = await collection.inviteContacts(token,userId)
 let messageApi=await collection.universityNames()
 console.log(messageApi)
 
- let messageToContact1=await collection.createMessages(profileUser,contact1,token,messageApi)
- let messageToContact2=await collection.createMessages(profileUser,contact2,token,messageApi)
- let messageToContact3=await collection.createMessages(profileUser,contact3,token,messageApi)
- let messageToContact4=await collection.createMessages(profileUser,contact4,token,messageApi)
- let messageToContact5=await collection.createMessages(profileUser,contact5,token,messageApi)
- let messageToContact6=await collection.createMessages(profileUser,contact6,token,messageApi)
+ let messageToContact1=await collection.createMessages(profileUser,contact1,token)
+ let messageToContact2=await collection.createMessages(profileUser,contact2,token)
+ let messageToContact3=await collection.createMessages(profileUser,contact3,token)
+ let messageToContact4=await collection.createMessages(profileUser,contact4,token)
+ let messageToContact5=await collection.createMessages(profileUser,contact5,token)
+ let messageToContact6=await collection.createMessages(profileUser,contact6,token)
 
 
  console.log(messageToContact1)
@@ -75,7 +75,8 @@ console.log(messageApi)
  console.log(messageToContact5)
  console.log(messageToContact6)
 
-
+const newUsers=await model.getNewUsers()
+console.log(newUsers)
 
     console.log(`postmancollection is up ${process.env.NODE_ENV}`);
 

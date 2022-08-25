@@ -6,9 +6,12 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'final',
-      user:     'root',
-      password: ''
+      host: 'wa-stage-metadata-db.cluster-cjaaguhfaelo.us-east-1.rds.amazonaws.com',
+      database: 'wa_main',
+      user:     'admin_user',
+      password: 'Getwavelength1',
+      port : '5656',
+
     },
     pool: {
       min: 2,
