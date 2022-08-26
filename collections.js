@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const { post } = require('request');
 let request = require('request')
 const random = require("randomstring");
-newUsers=require('./index')
+//newUsers=require('./index')
 
 
 let payload = {
@@ -18,24 +18,6 @@ let payload = {
 
 
 
-//JSON.parse(JSON.stringify(contacts))
-// let array=[]
-
-// array.push(contacts)
-// module.exports.signup = async function () {
-//   let payload = {
-//     phoneNumber: phoneNo,
-//     phoneNumberCode: "+91",
-//   }
-//   payload["name"] = "vijay"
-
-//   const uri = 'https://stagecoreapi.wvlnth.net/users'
-//   const res = await fetch(uri, { method: 'POST', body: JSON.stringify(payload) , headers: { 'Content-Type': 'application/json' } });
-//   console.log(payload)
-//   const data = await res.json();
-//   return data
-
-// }
 
 module.exports.verificationCode = async function () {
   const uri = 'https://stagecoreapi.wvlnth.net/users/verification_code'
@@ -76,7 +58,7 @@ module.exports.login = async function () {
 
 }
 
-module.exports.inviteContacts = async function (token,userId) {
+module.exports.inviteContacts = async function (token,userId,contacts) {
   const uri = `https://stagecoreapi.wvlnth.net/contacts/users/${userId}/invite`
  // console.log(contacts)
   
@@ -102,7 +84,7 @@ module.exports.inviteContacts = async function (token,userId) {
 
 }
 
-module.exports.createContacts = async function (token,userId) {
+module.exports.createContacts = async function (token,contacts,userId) {
   const uri = `https://stagecoreapi.wvlnth.net/contacts/users/${userId}`
  // console.log(contacts)
   
@@ -127,7 +109,7 @@ module.exports.createContacts = async function (token,userId) {
   return data
 
 }
-module.exports.getContacts = async function (token,userId) {
+module.exports.getContacts = async function (token,userId,contacts) {
   const uri = `https://stagemessagesapi.wvlnth.net/users/${userId}/datasync`
  // console.log(contacts)
   
