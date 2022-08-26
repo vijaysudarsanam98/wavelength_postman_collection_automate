@@ -1,9 +1,11 @@
 
-const knex=require('./knex')
+const knex = require('./knex')
 
-module.exports. getNewUsers = async function ()  {
-    let result = await knex.select('name','phone_number','phone_number_code').from('users').where('created_at','>=','today')
-    
-    console.log(result)
-    return result
-  }
+module.exports.getNewUsers = async function () {
+  let result = await knex.select('name', 'phone_number as phoneNumber', 'phone_number_code as phoneNumberCode')
+
+    .from('users')
+    .where('last_loggedin_at', '>=', 'today')
+    .whereNot('id', '40')
+  return result
+}
