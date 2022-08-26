@@ -56,31 +56,16 @@ let inviteContacts = await collection.inviteContacts(token,userId,newUsers)
  console.log(createContacts)
  let getContacts=await collection.getContacts(token,userId)
  console.log(getContacts)
-//  let profileUser=getContacts.profile
-//  let contact1=getContacts.c1.userId
-//  let contact2=getContacts.c2.userId
-//  let contact3=getContacts.c3.userId
-//  let contact4=getContacts.c4.userId
-//  let contact5=getContacts.c5.userId
-//  let contact6=getContacts.c6.userId
  
-// let messageApi=await collection.universityNames()
-// console.log(messageApi)
 
-//  let messageToContact1=await collection.createMessages(profileUser,contact1,token,messageApi)
-//  let messageToContact2=await collection.createMessages(profileUser,contact2,token,messageApi)
-//  let messageToContact3=await collection.createMessages(profileUser,contact3,token,messageApi)
-//  let messageToContact4=await collection.createMessages(profileUser,contact4,token,messageApi)
-//  let messageToContact5=await collection.createMessages(profileUser,contact5,token,messageApi)
-//  let messageToContact6=await collection.createMessages(profileUser,contact6,token,messageApi)
+ 
+let messageApi=await collection.universityNames()
+console.log(messageApi)
+
+ let messageToContact=await collection.createMessages(userId,getContacts,token,messageApi)
 
 
-//  console.log(messageToContact1)
-//  console.log(messageToContact2)
-//  console.log(messageToContact3)
-//  console.log(messageToContact4)
-//  console.log(messageToContact5)
-//  console.log(messageToContact6)
+ console.log(messageToContact)
 
 
 

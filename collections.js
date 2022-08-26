@@ -112,7 +112,7 @@ module.exports.createContacts = async function (token,newUsers,userId) {
   return data
 
 }
-module.exports.getContacts = async function (token,userId,contacts) {
+module.exports.getContacts = async function (token,userId) {
   const uri = `https://stagemessagesapi.wvlnth.net/users/${userId}/datasync`
  // console.log(contacts)
   
@@ -122,8 +122,7 @@ module.exports.getContacts = async function (token,userId,contacts) {
       'Content-Type': 'application/json'
     }
 
-    console.log(contacts)
-    console.log(requestHeaders)
+   
   
 
   const res = await fetch(uri, { 
@@ -133,38 +132,29 @@ module.exports.getContacts = async function (token,userId,contacts) {
     
    // console.log(contacts)
   const data = await res.json();
+  console.log(data)
 
-  let profile=data.objects.profile.userId
-  console.log(profile)
-  // let c1=data.objects.contacts[0]
-  // let c2=data.objects.contacts[1]
-  // let c3=data.objects.contacts[2]
-  // let c4=data.objects.contacts[3]
-  // let c5=data.objects.contacts[4]
-  // let c6=data.objects.contacts[5]
+  let contact=data.objects.contacts
+  console.log(contact)
 
-  // console.log(c1)
-  // console.log(c2)
-  // console.log(c3)
-  // console.log(c4)
-  // console.log(c5)
-  // console.log(c6)
-  // console.log(profile)
+  let contactUserIds=[]
+ 
+    for(const member of contact){
+      console.log(member.userId)
+      contactUserIds.push(member.userId)
+      
+        }
+   
+ 
+  
 
+  
+  
+  
 
+  
 
-
-  // return {
-  //   profile,
-  //   c1,
-  //   c2,
-  //   c3,
-  //   c4,
-  //   c5,
-  //   c6
-  // }
-
-  return profile
+  return contactUserIds
 
   
 }
