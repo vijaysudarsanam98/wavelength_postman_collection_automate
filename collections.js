@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const { post } = require('request');
 let request = require('request')
 const random = require("randomstring");
+newUsers=require('./index')
 
 
 let payload = {
@@ -12,9 +13,12 @@ let payload = {
 
 
 
-let contacts=[{"name":"Test1", "phoneNumber":"1000090002", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090002", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090003", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090004", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090005", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090006", "phoneNumberCode":"+91"},{"name":"Test1", "phoneNumber":"1000090007", "phoneNumberCode":"+91"}]
 
-JSON.parse(JSON.stringify(contacts))
+
+
+
+
+//JSON.parse(JSON.stringify(contacts))
 // let array=[]
 
 // array.push(contacts)
