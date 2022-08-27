@@ -186,7 +186,6 @@ module.exports.createMessages = async function (profileUser, contactUser, token,
 
   let contactId
 
-  for (index = 0; index < contactUser.length; index++) {
 
     for (const member of contactUser) {
       console.log(member)
@@ -198,19 +197,22 @@ module.exports.createMessages = async function (profileUser, contactUser, token,
       console.log(msgBody)
       contactId = msgBody
 
+      const res = await fetch(uri, {
+        method: 'POST',
+        body: JSON.stringify(contactId),
+        headers: requestHeaders
+      });
+  
+      console.log(res)
+      const data = await res.text();
+      console.log(data)
+
+     
     }
 
-    const res = await fetch(uri, {
-      method: 'POST',
-      body: JSON.stringify(contactId),
-      headers: requestHeaders
-    });
+    
 
-    console.log(res)
-    const data = await res.text();
-    console.log(data)
-
-  }
+  
 
 
 
