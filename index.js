@@ -56,12 +56,8 @@ app.listen(port, async function () {
   console.log(createContacts)
   let getContacts = await collection.getContacts(token, userId)
   console.log(getContacts)
-
-
-
-  let messageApi = await collection.universityNames()
+  let messageApi = await collection.healthNews()
   console.log(messageApi)
-
   let messageToContact = await collection.createMessages(userId, getContacts, token, messageApi)
 
 

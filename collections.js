@@ -149,7 +149,7 @@ module.exports.getContacts = async function (token, userId) {
 
 }
 
-module.exports.universityNames = async function () {
+module.exports.healthNews = async function () {
   const uri = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json'
 
   console.log(uri)
