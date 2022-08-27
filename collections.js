@@ -150,7 +150,7 @@ module.exports.getContacts = async function (token, userId) {
 }
 
 module.exports.universityNames = async function () {
-  const uri = 'https://api.coindesk.com/v1/bpi/currentprice.json'
+  const uri = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json'
 
   console.log(uri)
 
@@ -163,10 +163,11 @@ module.exports.universityNames = async function () {
   });
 
 
-  const msg1 = await res.json();
-  const x = JSON.stringify(msg1);
-  const y = x.replaceAll('"', '',);
-  const msg = y.replace(/[{()}]/g, '');
+  const data = await res.json();
+  const string = JSON.stringify(data);
+  const strreplace = string.replaceAll('"', '',);
+  const slicemsg = strreplace.replace(/[{()}]/g, '');
+  var msg = slicemsg.slice(87, 127)
   console.log(msg)
   return msg
 }
