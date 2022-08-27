@@ -25,10 +25,11 @@ module.exports.verificationCode = async function () {
   delete payload.name
   console.log(payload)
 
-  const res = await fetch(uri, { 
-    method: 'POST', 
+  const res = await fetch(uri, {
+    method: 'POST',
     body: JSON.stringify(payload),
-    headers: { 'Content-Type': 'application/json' } });
+    headers: { 'Content-Type': 'application/json' }
+  });
   const data = await res.json();
   return data
 
@@ -36,20 +37,19 @@ module.exports.verificationCode = async function () {
 module.exports.login = async function () {
   const uri = 'https://stagecoreapi.wvlnth.net/users/login'
   payload["deviceId"] = "1234567890123456",
-  payload["verificationCode"] = "10000"
+    payload["verificationCode"] = "10000"
   console.log(payload)
 
-  const res = await fetch(uri, { 
-    method: 'POST', 
+  const res = await fetch(uri, {
+    method: 'POST',
     body: JSON.stringify(payload),
-    headers: { 'Content-Type': 'application/json' } });
-    console.log(res)
+    headers: { 'Content-Type': 'application/json' }
+  });
+  console.log(res)
   const data = await res.json()
- // console.log(data.objects.userId)
- // const parse=JSON.parse(data[1])
-  let userId=data.objects.userId
+  let userId = data.objects.userId
   console.log(userId)
-  let token=data.objects.token
+  let token = data.objects.token
   console.log(token)
   return {
     userId,
@@ -58,159 +58,161 @@ module.exports.login = async function () {
 
 }
 
-module.exports.inviteContacts = async function (token,userId,newUsers) {
+module.exports.inviteContacts = async function (token, userId, newUsers) {
   const uri = `https://stagecoreapi.wvlnth.net/contacts/users/${userId}/invite`
- // console.log(contacts)
-  
-    const requestHeaders={
-      'Authorization': "Bearer"+ " " + token,
 
-      'Content-Type': 'application/json'
-    }
+  const requestHeaders = {
+    'Authorization': "Bearer" + " " + token,
 
-    
-    console.log(requestHeaders)
-  
+    'Content-Type': 'application/json'
+  }
 
-  const res = await fetch(uri, { 
-    method: 'POST', 
-    body:JSON.stringify(newUsers),
-    headers: requestHeaders });
 
-    
-   // console.log(contacts)
+  console.log(requestHeaders)
+
+
+  const res = await fetch(uri, {
+    method: 'POST',
+    body: JSON.stringify(newUsers),
+    headers: requestHeaders
+  });
+
+
   const data = await res.text();
-  console.log("inivte data"+data)
+  console.log("inivte data" + data)
   return data
 
 }
 
-module.exports.createContacts = async function (token,newUsers,userId) {
+module.exports.createContacts = async function (token, newUsers, userId) {
   const uri = `https://stagecoreapi.wvlnth.net/contacts/users/${userId}`
- // console.log(contacts)
-  
- JSON.parse(JSON.stringify(newUsers))
 
-    const requestHeaders={
-      'Authorization': "Bearer"+ " " + token,
+  JSON.parse(JSON.stringify(newUsers))
 
-      'Content-Type': 'application/json'
-    }
+  const requestHeaders = {
+    'Authorization': "Bearer" + " " + token,
 
-    console.log(newUsers)
-    console.log(requestHeaders)
-  
+    'Content-Type': 'application/json'
+  }
 
-  const res = await fetch(uri, { 
-    method: 'POST', 
-    body:JSON.stringify(newUsers),
-    headers: requestHeaders });
+  console.log(newUsers)
+  console.log(requestHeaders)
 
-    
-   // console.log(contacts)
+
+  const res = await fetch(uri, {
+    method: 'POST',
+    body: JSON.stringify(newUsers),
+    headers: requestHeaders
+  });
+
+
+  // console.log(contacts)
   const data = await res.json();
   return data
 
 }
-module.exports.getContacts = async function (token,userId) {
+module.exports.getContacts = async function (token, userId) {
   const uri = `https://stagemessagesapi.wvlnth.net/users/${userId}/datasync`
- // console.log(contacts)
-  
-    const requestHeaders={
-      'Authorization': "Bearer"+ " " + token,
 
-      'Content-Type': 'application/json'
-    }
+  const requestHeaders = {
+    'Authorization': "Bearer" + " " + token,
 
-   
-  
+    'Content-Type': 'application/json'
+  }
 
-  const res = await fetch(uri, { 
-    method: 'GET', 
-    headers: requestHeaders });
 
-    
-   // console.log(contacts)
+
+
+  const res = await fetch(uri, {
+    method: 'GET',
+    headers: requestHeaders
+  });
+
+
+  // console.log(contacts)
   const data = await res.json();
   console.log(data)
 
-  let contact=data.objects.contacts
+  let contact = data.objects.contacts
   console.log(contact)
 
-  let contactUserIds=[]
- 
-    for(const member of contact){
-      console.log(member.userId)
-      contactUserIds.push(member.userId)
-      
-        }
-   
- 
-  
+  let contactUserIds = []
 
-  
-  
-  
+  for (const member of contact) {
+    console.log(member.userId)
+    contactUserIds.push(member.userId)
 
-  
+  }
 
   return contactUserIds
 
-  
+
 }
 
 module.exports.universityNames = async function () {
-  const uri='https://api.coindesk.com/v1/bpi/currentprice.json'
+  const uri = 'https://api.coindesk.com/v1/bpi/currentprice.json'
 
   console.log(uri)
- // console.log(contacts)
-  
-    
 
-    
 
-  const res = await fetch(uri, { 
-    method: 'GET' });
 
-   
+
+
+  const res = await fetch(uri, {
+    method: 'GET'
+  });
+
+
   const msg1 = await res.json();
- const x =  JSON.stringify(msg1);
- const y = x.replaceAll('"', '',);
- const msg = y.replace(/[{()}]/g, '');
+  const x = JSON.stringify(msg1);
+  const y = x.replaceAll('"', '',);
+  const msg = y.replace(/[{()}]/g, '');
   console.log(msg)
   return msg
 }
 
-//const x = msg;
 
-module.exports.createMessages = async function (profileUser,contactUser,token,msg) {
-  const uri='https://stagemessagesapi.wvlnth.net/messages'
+module.exports.createMessages = async function (profileUser, contactUser, token, msg) {
+  const uri = 'https://stagemessagesapi.wvlnth.net/messages'
   console.log(contactUser)
 
   console.log(uri)
- // console.log(contacts)
-  
-    const requestHeaders={
-      'Authorization': "Bearer"+ " " + token,
 
-      'Content-Type': 'application/json'
+  const requestHeaders = {
+    'Authorization': "Bearer" + " " + token,
+
+    'Content-Type': 'application/json'
+  }
+
+  let contactId
+
+  for (index = 0; index < contactUser.length; index++) {
+
+    for (const member of contactUser) {
+      console.log(member)
+
+      let msgBody = {
+        fromUserId: profileUser, toUserId: member,
+        message: msg
+      }
+      console.log(msgBody)
+      contactId = msgBody
+
     }
 
-    let msgBody={
-      fromUserId: profileUser, toUserId: contactUser, 
-message: msg
-    }
-  console.log(msgBody)
-
-  const res = await fetch(uri, { 
-    method: 'POST', 
-    body:JSON.stringify(msgBody),
-    headers: requestHeaders });
+    const res = await fetch(uri, {
+      method: 'POST',
+      body: JSON.stringify(contactId),
+      headers: requestHeaders
+    });
 
     console.log(res)
-   // console.log(contacts)
-  const data = await res.text();
-  return data
+    const data = await res.text();
+    console.log(data)
+
+  }
+
+
 
 }
 
