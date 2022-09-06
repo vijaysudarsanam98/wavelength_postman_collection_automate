@@ -11,8 +11,7 @@
     "randomstring": "^1.2.2",
     "request": "^2.88.2",
     "superagent": "^8.0.0",
-    "supertest": "^6.2.4",
-    "websocket": "^1.0.34"
+    "supertest": "^6.2.4"
   },
   "name": "wavelength_postman_collection_automate",
   "version": "1.0.0",
